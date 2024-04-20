@@ -1,0 +1,26 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block header %}
+    <h1 class="text-center" style="color: white;">Busca tu curso</h1>
+{% endblock %}
+
+
+{% block contenido %}  
+
+    <!-- <h2>Buscar Curso</h2>
+    <form action="buscar" method="GET">
+        <p>Nombre</p>
+        <input type="text" name="nombre" id="nombre">
+        <button>Buscar</button>
+    </form>  -->
+
+    <div class="container-fluid mt-3 text-center">
+        <form action="buscar" method="GET" class="d-flex col-md-4" role="search">
+            <input class="form-control me-2" type="search" placeholder="Buscar curso" aria-label="Search" name="nombre" id="nombre">
+            <button class="btn btn-outline-success" type="submit">Buscar</button>
+        </form>
+    </div>
+
+{% endblock %}

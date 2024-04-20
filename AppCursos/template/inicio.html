@@ -1,0 +1,30 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+
+{% block contenido %}
+
+    <h2>{{mensaje}}</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12  col-md-4">
+                <div class="card">
+                    <img src="{% static 'AppCursos/assets/img/testimonials-2.jpg' %}"/>
+                    <div class="card-body">
+                        <h5 class="card-title">{{usuario}}</h5>
+                        <p class="card-text">Me gusto mucho el curso</p>
+                        <a class="btn btn-outline-success mb-3 " href="">Enviar mensaje</a>
+                        <a href="{% url 'EditarPerfil' %}" class="btn btn-outline-warning mb-3 ">Editar</a>
+                        <form method="post" action="{% url 'Logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-outline-danger mb-3 ">Cerrar Sesión</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

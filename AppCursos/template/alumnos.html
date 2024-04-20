@@ -1,0 +1,82 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block header %}
+    <h1 class="text-center" style="color: white;">Alumnos</h1>
+{% endblock %}
+
+{% block contenido %}
+
+<main>
+    <a href="nuevo_alumno" class="btn btn-primary btn-sm">Agregar Nuevo Alumno</a>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <div class="card">
+                    <img src="{% static 'AppCursos/assets/img/student_01.jpeg'%}" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Juana Gomez</h5>
+                        <p class="card-text">Me gusto mucho el curso.</p>
+                        <a class="btn btn-danger btn-sm" href="">Enviar mensaje</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="card">
+                    <img src="{% static 'AppCursos/assets/img/student_03.jpeg'%}" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title btn-sm">Ramon Perez</h5>
+                        <p class="card-text btn-sm">Me gusto mucho el curso.</p>
+                        <a class="btn btn-danger btn-sm" href="">Enviar mensaje</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <div class="card">
+                    <img src="{% static 'AppCursos/assets/img/student_02.jpeg'%}" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Julia Lopez</h5>
+                        <p class="card-text">Me gusto mucho el curso.</p>
+                        <a class="btn btn-danger btn-sm" href="">Enviar mensaje</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="card">
+                    <img src="{% static 'AppCursos/assets/img/student_05.jpeg'%}" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Omar H.</h5>
+                        <p class="card-text">Me gusto mucho el curso.</p>
+                        <a class="btn btn-danger btn-sm" href="">Enviar mensaje</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% for n in alumnos %}
+
+    <div class="container">
+        <div class="col-12  col-md-4">
+            <div class="card">
+                <img src="{% static 'AppCursos/assets/img/student_04.jpeg' %}" />
+                <div class="card-body">
+                    <h5 class="card-title">{{n.nombre_alumno}} {{n.apellido_alumno}}</h5>
+                    <p class="card-text">Legajo Nº: {{n.legajo_alumno}}.</p>
+                    <a class="btn btn-danger btn-sm" href="">Enviar mensaje</a>
+                    <a href="{% url 'editar_alumno' n.id %}" class="btn btn-outline-warning btn-sm">Editar</a>
+                    <a href="{% url 'elimina_alumno' n.id %}" class="btn btn-outline-danger btn-sm">Eliminar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</main>
+
+{% endblock %}

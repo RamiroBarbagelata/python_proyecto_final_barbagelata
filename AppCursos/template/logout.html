@@ -1,0 +1,15 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block header %}
+    <h1 class="text-center" style="color: white;">Gracias, volvé pronto</h1>
+{% endblock %}
+
+{% block contenido %}
+
+<div class="container-fluid text-center">
+    <a href="{% url 'home' %}" class="btn btn-primary col-6 mt-3" >Volver</a>
+</div>
+
+{% endblock %}

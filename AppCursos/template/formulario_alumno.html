@@ -1,0 +1,33 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+
+{% block contenido %}
+<div class="container-form">
+    <form action="{% url 'nuevo_alumno' %}" method="POST" class="form">
+        {% csrf_token %}
+        <div class="nombre_alumno">
+            <p>Nombre: </p>
+            <input type="text" name = "nombre_alumno" placeholder="Ingresa tu nombre" required>
+        </div>
+    
+        <div class="apellido_alumno">
+            <p>Apellido: </p>
+            <input type="text" name="apellido_alumno" placeholder="Ingresa tu apellido" required>
+        </div>
+
+        <div class="legajo_alumno">
+            <p>Legajo: </p>
+            <input type="number" name="legajo_alumno" placeholder="Ingresa tu legajo" required>
+        </div>
+    
+        <div class="container-btn">
+            <button class="btn">Enviar</button>
+        </div>
+    
+    </form>
+</div>
+    
+
+{% endblock %}
