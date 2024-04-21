@@ -17,10 +17,11 @@ def inicio(request):
 #CURSOS
 
 def curso_formulario(request):
-
+    avatares = Avatar.objects.filter(user=request.user.id)
     if request.method == "POST":
 
         mi_formulario = Curso_formulario( request.POST )
+        
 
         if mi_formulario.is_valid():
             datos = mi_formulario.cleaned_data
@@ -28,7 +29,7 @@ def curso_formulario(request):
             curso.save()
             return render(request , "formulario.html")
 
-    return render(request , "formulario.html")
+    return render(request , "formulario.html", {"url":avatares[0].imagen.url})
 
 @login_required
 def ver_cursos(request):
@@ -66,11 +67,13 @@ def elimina_curso(request, id):
     curso = Curso.objects.get(id=id)
     curso.delete()
     curso = Curso.objects.all()
+    avatares = Avatar.objects.filter(user=request.user.id)
     
-    return render (request, "cursos.html", {"cursos": curso})
+    return render (request, "cursos.html", {"cursos": curso, "url":avatares[0].imagen.url})
 
 def editar(request , id):
     curso = Curso.objects.get(id=id)
+    avatares = Avatar.objects.filter(user=request.user.id)
 
     if request.method == "POST":
         mi_formulario = Curso_formulario( request.POST )
@@ -85,7 +88,7 @@ def editar(request , id):
     else:
         mi_formulario = Curso_formulario(initial={"nombre":curso.nombre , "camada":curso.camada})
     
-    return render( request , "editar_curso.html" , {"mi_formulario": mi_formulario , "curso":curso})
+    return render( request , "editar_curso.html" , {"mi_formulario": mi_formulario , "curso":curso, "url":avatares[0].imagen.url})
 
 # ALUMNOS
 def alumnos(request):
@@ -97,6 +100,7 @@ def nuevo_alumno(request, nombre_alumno, apellido_alumno, legajo_alumno):
     alumno.save()
     texto = f"Se guardo en la Base de datos el Alumno: {alumno.nombre_alumno} {alumno.apellido_alumno} ({alumno.legajo_alumno})"
     return HttpResponse(texto)
+    
 
 @login_required
 def ver_alumnos(request):
@@ -197,14 +201,15 @@ def elimina_profesor(request, id):
 
 def editar_profesor(request , id):
     profesor = Profesor.objects.get(id=id)
-
+    avatares = Avatar.objects.filter(user=request.user.id)
+    
     if request.method == "POST":
         mi_formulario = Profesor_formulario( request.POST )
         if mi_formulario.is_valid():
             datos = mi_formulario.cleaned_data
             profesor.nombre_profesor = datos["nombre_profesor"]
             profesor.apellido_profesor = datos["apellido_profesor"]
-            profesor.materia_profesor = datos["materia_profesor "]
+            profesor.materia_profesor = datos["materia_profesor"]
             profesor.legajo_profesor = datos ["legajo_profesor"]
             profesor.save()
             profesor = Profesor.objects.all()
@@ -213,7 +218,7 @@ def editar_profesor(request , id):
     else:
         mi_formulario = Profesor_formulario(initial={"nombre_profesor":profesor.nombre_profesor , "apellido_profesor":profesor.apellido_profesor, "materia_profesor":profesor.materia_profesor, "legajo_profesor":profesor.legajo_profesor})
     
-    return render( request , "editar_profesor.html" , {"mi_formulario": mi_formulario , "profesor":profesor})
+    return render( request , "editar_profesor.html" , {"mi_formulario": mi_formulario , "profesor":profesor, "url":avatares[0].imagen.url})
 
 
 # LOGIN
@@ -257,6 +262,7 @@ def register(request):
 
 def editarPerfil(request):
     usuario = request.user
+    avatares = Avatar.objects.filter(user=request.user.id)
     if request.method == "POST":
         mi_formulario = UserEditForm(request.POST)
         
@@ -271,4 +277,5 @@ def editarPerfil(request):
     else:
         mi_formulario = UserEditForm(initial={"email":usuario.email})
     
-    return render (request , "editar_perfil.html", {"miFormulario":mi_formulario, "usuario":usuario})
+    return render (request , "editar_perfil.html", {"miFormulario":mi_formulario, "usuario":usuario, "url":avatares[0].imagen.url})
+

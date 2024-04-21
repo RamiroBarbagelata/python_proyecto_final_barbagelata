@@ -21,7 +21,7 @@ urlpatterns = [
     path('nuevo_profesor', views.profesor_formulario, name="nuevo_profesor"),
     path('ver_profesores', views.ver_profesores, name='profesores'),
     path('elimina_profesor/<int:id>', views.elimina_profesor, name="elimina_profesor"),
-        path("editar_profesor/<int:id>" , views.editar_profesor , name="editar_profesor"),
+    path("editar_profesor/<int:id>" , views.editar_profesor , name="editar_profesor"),
     path('login', views.login_request, name="login"),
     path('register', views.register, name="register"),
     path('logout', LogoutView.as_view(template_name="logout.html") , name="Logout"),
