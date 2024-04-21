@@ -7,23 +7,23 @@
 <div class="container-form">
     <form action="{% url 'nuevo_alumno' %}" method="POST" class="form">
         {% csrf_token %}
-        <div class="nombre_alumno">
-            <p>Nombre: </p>
-            <input type="text" name = "nombre_alumno" placeholder="Ingresa tu nombre" required>
-        </div>
-    
-        <div class="apellido_alumno">
-            <p>Apellido: </p>
-            <input type="text" name="apellido_alumno" placeholder="Ingresa tu apellido" required>
+        <div class="nombre_alumno col-md-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre_alumno" aria-describedby="nombre_alumno" name="nombre_alumno">
         </div>
 
-        <div class="legajo_alumno">
-            <p>Legajo: </p>
-            <input type="number" name="legajo_alumno" placeholder="Ingresa tu legajo" required>
+        <div class="apellido_alumno col-md-3">
+            <label class="form-label">Apellido</label>
+            <input type="text" class="form-control" id="apellido_alumno" aria-describedby="apellido_alumno" name="apellido_alumno">
         </div>
-    
+
+        <div class="legajo_alumno col-md-3">
+            <label class="form-label">Legajo Nº </label>
+            <input type="number" class="form-control" id="legajo_alumno" aria-describedby="legajo_alumno" name="legajo_alumno">
+        </div>
+
         <div class="container-btn">
-            <button class="btn">Enviar</button>
+            <button type="submit" class="btn btn-primary btn-sm">Enviar</button>
         </div>
     
     </form>

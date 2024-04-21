@@ -7,28 +7,29 @@
 <div class="container-form">
     <form action="{% url 'nuevo_profesor' %}" method="POST" class="form">
         {% csrf_token %}
-        <div class="nombre_profesor">
-            <p>Nombre: </p>
-            <input type="text" name = "nombre_profesor" placeholder="Ingresa tu nombre" required>
-        </div>
-    
-        <div class="apellido_profesor">
-            <p>Apellido: </p>
-            <input type="text" name="apellido_profesor" placeholder="Ingresa tu apellido" required>
+
+        <div class="nombre_profesor col-md-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre_profesor" aria-describedby="nombre_profesor" name="nombre_profesor">
         </div>
 
-        <div class="materia_profesor">
-            <p>Profesor de: </p>
-            <input type="text" name="materia_profesor" placeholder="Ingresa tu curso" required>
+        <div class="apellido_profesor col-md-3">
+            <label class="form-label">Apellido</label>
+            <input type="text" class="form-control" id="apellido_profesor" aria-describedby="apellido_profesor" name="apellido_profesor">
         </div>
 
-        <div class="legajo_profesor">
-            <p>Legajo: </p>
-            <input type="number" name="legajo_profesor" placeholder="Ingresa tu número de legajo" required>
+        <div class="materia_profesor col-md-3">
+            <label class="form-label">Materia/Curso</label>
+            <input type="text" class="form-control" id="materia_profesor" aria-describedby="materia_profesor" name="materia_profesor">
         </div>
     
+        <div class="legajo_profesor col-md-3">
+            <label class="form-label">Legago Nº </label>
+            <input type="text" class="form-control" id="legajo_profesor" aria-describedby="legajo_profesor" name="legajo_profesor">
+        </div>
+
         <div class="container-btn">
-            <button class="btn">Enviar</button>
+            <button type="submit" class="btn btn-primary btn-sm">Enviar</button>
         </div>
     
     </form>
