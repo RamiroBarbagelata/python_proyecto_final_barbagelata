@@ -45,6 +45,4 @@ User: ramiro
 Password: coder321
 
 ### Video Demo
-
-Aquí está un enlace a mi video en YouTube:
-[![Texto Alternativo](https://drive.google.com/file/d/1Pzow-8jMEQ4Xtrlkjn1ATWtlIYG36OMc/view?usp=sharing)
+https://drive.google.com/file/d/1Pzow-8jMEQ4Xtrlkjn1ATWtlIYG36OMc/view?usp=sharing
